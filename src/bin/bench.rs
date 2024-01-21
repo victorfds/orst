@@ -33,11 +33,10 @@ impl<T: Ord> Ord for SortEvaluator<T> {
 }
 
 impl<T> Bytify for SortEvaluator<T>
-    where
-        T: Bytify
+where
+    T: Bytify,
 {
-    fn bytify(&self, level: usize) -> Option<usize>
-    {
+    fn bytify(&self, level: usize) -> Option<usize> {
         return self.t.bytify(level);
     }
 }
@@ -72,6 +71,8 @@ fn main() {
             let took = bench(RadixSort, &values, &counter);
             println!("{} {} {} {}", "radix", n, took.0, took.1);
             let took = bench(HeapSort, &values, &counter);
+            println!("{} {} {} {}", "heap", n, took.0, took.1);
+            let took = bench(MergeSort, &values, &counter);
             println!("{} {} {} {}", "heap", n, took.0, took.1);
             let took = bench(StdSorter, &values, &counter);
             println!("{} {} {} {}", "stdstable", n, took.0, took.1);
