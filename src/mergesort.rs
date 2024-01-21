@@ -17,7 +17,7 @@ fn mergesort<T: Ord>(slice: &mut [T]) {
     let mut left_idx = 0;
     let mut right_idx = mid;
 
-    while left_idx <= mid && right_idx < len {
+    while left_idx < len && right_idx < len {
         if slice[left_idx] <= slice[right_idx] {
             left_idx += 1;
         } else {
